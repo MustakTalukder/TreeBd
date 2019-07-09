@@ -6,7 +6,7 @@ const transporter  =require('../nodemailer')
 const welcomeTemplate = require('../emailTemplate/WelcomeTemplate')
 const verificationTemplate = require('../emailTemplate/VerificationTemplate')
 const ResetTemplate = require('../emailTemplate/ResetTemplate')
-
+require('dotenv').config()
 
 
 exports.signup = (req, res) => {
