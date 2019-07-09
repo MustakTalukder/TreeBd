@@ -1,0 +1,41 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "braintree": "^2.17.0",
+    "concurrently": "^4.1.1",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-validator": "^5.3.1",
+    "formidable": "^1.2.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.6.0",
+    "morgan": "^1.9.1",
+    "nodemailer": "^6.2.1",
+    "nodemon": "^1.19.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd client install && yarn --cwd client build"
+
+  },
+
+  "private": true,
+  "engines": {
+    "node": "10.9.0",
+    "npm": "6.9.0",
+    "yarn": "1.6.0"
+  },
+  "author": "",
+  "description": ""
+}

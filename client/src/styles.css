@@ -1,0 +1,159 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html{
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body{
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+/**
+ * border radius
+ */
+
+ 
+
+ .btn,
+ .jumbotron,
+ .nav :hover {
+     border-radius: 0px;
+ }
+
+  /* Cart badge */
+
+  .cart-badge,
+  .cart-badge:hover {
+      border-radius: 50%;
+      padding: 2px;
+      font-size: 12px;
+      font-style: italic;
+      background: #ee7752
+  }
+ 
+ /**
+  * single product page - product name
+  */
+
+
+
+ 
+ .name {
+     /* background: #2EAE84; */
+     background: #1EAA8D;
+     color: #fff;
+     font-weight: bold;
+ }
+ 
+ /* black shade form 10-1 */
+ .black-10 {
+     background: #f2f2f2;
+ }
+ .black-9 {
+     background: #e6e6e6;
+ }
+ .black-8 {
+     background: #d9d9d9;
+ }
+ .black-7 {
+     background: #cccccc;
+ }
+ .black-6 {
+     background: #bfbfbf;
+ }
+ .black-5 {
+     background: #b3b3b3;
+ }
+ 
+
+
+ /**
+  * product image on card
+  */
+ 
+ .product-img {
+     min-height: 100px;
+ }
+ 
+ /* .jumbotron h2 {
+     margin-top: -20px;
+ }
+ 
+ @media only screen and (max-width: 600px) {
+     .jumbotron h2 {
+         margin-top: 10px;
+     }
+ } */
+ 
+ 
+ /* STart Login Page */
+
+
+
+ /* End Login page */
+
+ @media only screen and (max-width: 1600px) {
+     .searchDiv{
+        margin-top: 5%;
+        margin-left: 25%;
+    }
+ 
+ } 
+ @media only screen and (max-width: 1200px) {
+     .searchDiv{
+        margin-top: 5%;
+        margin-left: 25%;
+    }
+ 
+ } 
+
+
+ @media only screen and (max-width: 980px) {
+     .searchDiv{
+        margin-top: 3%;
+        margin-left: 25%;
+    }
+ 
+ } 
+
+ @media only screen and (max-width: 780px) {
+     .searchDiv{
+        margin-top: 1%;
+        margin-left: 25%;
+        
+    }
+ 
+ } 
+
+
+ @media only screen and (max-width: 600px) {
+     .searchDiv{
+        margin-top: 25%;
+        margin-left: 0%;
+        
+    }
+ 
+ } 
+
+
+
+
+
+
+ /* End CheckBox */
