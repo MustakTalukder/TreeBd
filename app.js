@@ -15,7 +15,7 @@ const authRoutes = require('./routes/authRoute');
 const userRoutes = require('./routes/userRoute');
 
 
-// APP 
+// APP  
 const app = express()
 
 
