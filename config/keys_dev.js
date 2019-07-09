@@ -1,5 +1,5 @@
 module.exports = {
     DATABASE: process.env.DATABASE,
-    SECRET: SECRET
+    SECRET: process.env.SECRET
   };
   
