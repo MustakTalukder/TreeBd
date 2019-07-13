@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "braintree": "^2.17.0",
+    "compression": "^1.7.4",
     "concurrently": "^4.1.1",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -15,6 +16,7 @@
     "express-validator": "^5.3.1",
     "formidable": "^1.2.1",
     "fs": "^0.0.1-security",
+    "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "mongodb": "^3.2.7",

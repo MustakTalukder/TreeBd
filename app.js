@@ -6,6 +6,11 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const expressValidator = require('express-validator');
 
+
+const helmet = require('helmet')
+const compression = require('compression')
+
+
 const path = require('path')
 require('dotenv').config()
 
@@ -21,13 +26,22 @@ const app = express()
 
 
 //DB
-const db = require('./config/keys').DATABASE;
+const MONGODB_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-n2lsy.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`
 
 
-mongoose.connect(db, {
+mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => console.log("DB Connected"))
+
+// //DB
+// const db = require('./config/keys').DATABASE;
+
+
+// mongoose.connect(db, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true
+// }).then(() => console.log("DB Connected"))
 
 
 
@@ -55,6 +69,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
+app.use(helmet());
+app.use(compression());
 
 
 
@@ -67,10 +83,11 @@ app.use('/api', require('./routes/productRoute'));
 app.use('/api', require('./routes/braintreeRoute'))
 app.use('/api', require('./routes/orderRoute'))
 
+console.log(process.env.NODE_ENV);
 
 
 
-// Server static assets if in production
+//Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static( 'client/build' ));
