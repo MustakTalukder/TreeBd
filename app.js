@@ -83,6 +83,16 @@ app.use('/api', require('./routes/productRoute'));
 app.use('/api', require('./routes/braintreeRoute'))
 app.use('/api', require('./routes/orderRoute'))
 
+// --------------------------------------------------------------------
+// app.use("/", authRoutes);
+// app.use('/', userRoutes);
+// app.use('/', require('./routes/categoryRoute'));
+// app.use('/', require('./routes/productRoute'));
+// app.use('/', require('./routes/braintreeRoute'))
+// app.use('/', require('./routes/orderRoute'))
+
+// ---------------------------------------------------------------------
+
 console.log(process.env.NODE_ENV);
 
 
