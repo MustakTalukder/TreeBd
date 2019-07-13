@@ -20,7 +20,7 @@ const app = express()
 
 
 
-// DB
+//DB
 const db = require('./config/keys').DATABASE;
 
 
@@ -28,6 +28,25 @@ mongoose.connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => console.log("DB Connected"))
+
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = require('./config/keys').DATABASE;
+
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+
+
+
+
+
+
 
 
 // Middlewares

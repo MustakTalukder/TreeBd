@@ -24,7 +24,7 @@ exports.signup = (req, res) => {
 
         // Mail verificatio
 
-        let activateLink = `http://localhost:3000/activateaccount/${user._id}?token=${user.activateToken}`
+        let activateLink = `https://treebd.herokuapp.com/activateaccount/${user._id}?token=${user.activateToken}`
         
         let template = verificationTemplate({
             name: user.name,
