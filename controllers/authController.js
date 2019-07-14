@@ -9,54 +9,86 @@ const ResetTemplate = require('../emailTemplate/ResetTemplate')
 require('dotenv').config()
 
 
-exports.signup = (req, res) => {
+exports.signup = async (req, res) => {
 
     console.clear()
-    
+
     try {
-        const user = new User(req.body);
+        //const user = new User(req.body);
 
-        user.activateToken = jwt.sign({ _id: user._id, name: user.name, email: user.email, password: user.password }, 'process.env.SECRET', { expiresIn: '1d' }) 
+       // user.activateToken = jwt.sign({ _id: user._id, name: user.name, email: user.email, password: user.password }, 'process.env.SECRET', { expiresIn: '1d' }) 
     
-    
-        user.save(async (err, user) => {
-            
-            
-            console.log("user==", user);
-    
-            
-            if (err) {
-    
-                return res.status(400).json({
-                    err: errorHandler(err)
-                })
-            }
 
-    
-            // Mail verificatio
-    
-            let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
-            
-            let template = verificationTemplate({
-                name: user.name,
-                link: activateLink
-            })
-    
-            await transporter.sendMail({
-                from: "learnandexploreteam@gmail.com",
-                to: user.email,
-                subject: "TreeBd||Please Verify your account",
-                html: template
-            });
-    
-    
-            // user.salt = undefined
-            // user.hashed_password = undefined
-    
-            res.json({
-                 user
-             });
+        let activateLink = `tesing activation`
+        
+        let template = verificationTemplate({
+            name: req.body.name,
+            link: activateLink
         })
+
+        await transporter.sendMail({
+            from: "learnandexploreteam@gmail.com",
+            to: req.body.email,
+            subject: "TreeBd||Please Verify your account",
+            html: template
+        });
+        
+        res.json({
+            email: "Email found"
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // user.save(async (err, user) => {          
+        //     console.log("user==", user);
+
+        //     if (err) {
+    
+        //         return res.status(400).json({
+        //             err: errorHandler(err)
+        //         })
+        //     }
+
+    
+        //     // Mail verificatio
+    
+        //     let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
+            
+        //     let template = verificationTemplate({
+        //         name: user.name,
+        //         link: activateLink
+        //     })
+    
+        //     await transporter.sendMail({
+        //         from: "learnandexploreteam@gmail.com",
+        //         to: user.email,
+        //         subject: "TreeBd||Please Verify your account",
+        //         html: template
+        //     });
+    
+    
+        //     // user.salt = undefined
+        //     // user.hashed_password = undefined
+    
+        //     res.json({
+        //          user
+        //      });
+        // })
+    
+    
+    
         
     } catch (err) {
         
