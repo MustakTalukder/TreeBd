@@ -11,50 +11,58 @@ require('dotenv').config()
 
 exports.signup = (req, res) => {
 
-    const user = new User(req.body);
+    try {
+        const user = new User(req.body);
 
-    user.activateToken = jwt.sign({ _id: user._id, name: user.name, email: user.email, password: user.password }, 'process.env.SECRET', { expiresIn: '1d' }) 
-
-    user.save(async (err, user) => {
-        
-        if (err) {
-            console.clear();
-            console.log(err);
+        user.activateToken = jwt.sign({ _id: user._id, name: user.name, email: user.email, password: user.password }, 'process.env.SECRET', { expiresIn: '1d' }) 
+    
+    
+        user.save(async (err, user) => {
+    
+            console.log("user==", user);
+    
             
-            return res.status(400).json({
-                err: errorHandler(err)
+            if (err) {
+    
+                return res.status(400).json({
+                    err: errorHandler(err)
+                })
+            }
+
+    
+            // Mail verificatio
+    
+            let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
+            
+            let template = verificationTemplate({
+                name: user.name,
+                link: activateLink
             })
-        }
-
-
-
-        // Mail verificatio
-
-        let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
-        
-        let template = verificationTemplate({
-            name: user.name,
-            link: activateLink
+    
+            await transporter.sendMail({
+                from: "TreeBd@gmail.com",
+                to: user.email,
+                subject: "TreeBd||Please Verify your account",
+                html: template
+            });
+    
+    
+            // user.salt = undefined
+            // user.hashed_password = undefined
+    
+            res.json({
+                 user
+             });
         })
+        
+    } catch (err) {
+        
+        console.log("log from SIGN UP-", err);
 
+         res.json(err)
+        
+    }
 
-
-        await transporter.sendMail({
-            from: "TreeBd@gmail.com",
-            to: user.email,
-            subject: "TreeBd||Please Verify your account",
-            html: template
-        });
-
-
-        // user.salt = undefined
-        // user.hashed_password = undefined
-
-        res.json({
-             user
-         });
-    })
- 
 }
 
 
