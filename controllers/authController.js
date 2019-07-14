@@ -30,7 +30,7 @@ exports.signup =  (req, res) => {
     
             // Mail verificatio
     
-            let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
+            let activateLink = `${process.env.APP_URL}/activateaccount/${user._id}?token=${user.activateToken}`
             
             let template = verificationTemplate({
                 name: user.name,
