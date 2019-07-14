@@ -11,6 +11,8 @@ require('dotenv').config()
 
 exports.signup = (req, res) => {
 
+    console.clear()
+    
     try {
         const user = new User(req.body);
 
@@ -18,7 +20,8 @@ exports.signup = (req, res) => {
     
     
         user.save(async (err, user) => {
-    
+            
+            
             console.log("user==", user);
     
             
@@ -40,7 +43,7 @@ exports.signup = (req, res) => {
             })
     
             await transporter.sendMail({
-                from: "TreeBd@gmail.com",
+                from: "learnandexploreteam@gmail.com",
                 to: user.email,
                 subject: "TreeBd||Please Verify your account",
                 html: template
