@@ -15,16 +15,22 @@ exports.signup = (req, res) => {
 
     user.activateToken = jwt.sign({ _id: user._id, name: user.name, email: user.email, password: user.password }, 'process.env.SECRET', { expiresIn: '1d' }) 
 
-    user.save( async (err, user) => {
+    user.save(async (err, user) => {
+        
         if (err) {
+            console.clear();
+            console.log(err);
+            
             return res.status(400).json({
                 err: errorHandler(err)
             })
         }
 
+
+
         // Mail verificatio
 
-        let activateLink = `https://treebd.herokuapp.com/activateaccount/${user._id}?token=${user.activateToken}`
+        let activateLink = `/activateaccount/${user._id}?token=${user.activateToken}`
         
         let template = verificationTemplate({
             name: user.name,
@@ -39,9 +45,6 @@ exports.signup = (req, res) => {
             subject: "TreeBd||Please Verify your account",
             html: template
         });
-        
-
-    
 
 
         // user.salt = undefined

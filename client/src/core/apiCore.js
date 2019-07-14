@@ -3,7 +3,7 @@ import  queryString from 'query-string'
 
 export const getProducts = (sortBy) => {
     
-    console.log(API);
+   // console.log(API);
     
     
     return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {

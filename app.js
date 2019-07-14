@@ -34,6 +34,8 @@ mongoose.connect(MONGODB_URL, {
     useCreateIndex: true
 }).then(() => console.log("DB Connected"))
 
+
+
 // //DB
 // const db = require('./config/keys').DATABASE;
 
