@@ -57,13 +57,17 @@ const Home = () => {
 
 
     const loadProductsByArrival = () => {
-        getProducts('createdAt').then(data => {
+        getProducts('createdAt')
+            .then(data => {
+            console.log(data);
+            
             if (data.error) {
                 setError(data.error)
             } else {
                 setProductsByArrival(data)
             }
-        })
+            })
+            .catch(error => console.log(error))
     }
 
     useEffect(() => {

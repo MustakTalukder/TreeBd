@@ -25,6 +25,7 @@ const Orders = () => {
                 }
                 
             })
+            .catch(error => console.log(error))
         
     }
 
@@ -39,6 +40,7 @@ const Orders = () => {
                 }
                 
             })
+            .catch(error => console.log(error))
         
     }
 
@@ -96,6 +98,7 @@ const Orders = () => {
                 }
                 
             })
+            .catch(error => console.log(error))
         
         
     }
@@ -221,12 +224,12 @@ const Orders = () => {
             
 
             <div className="row mb-5">
-                <table class=" shadow table table-bordered table-success mb-5">
+                <table className=" shadow table table-bordered table-success mb-5">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Orders</th>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Products</th>
                             <th scope="col">Time</th>
                             <th scope="col">Status</th>
                         </tr>
@@ -236,8 +239,8 @@ const Orders = () => {
                         {
                             orders.map((order, index) => (
                                 <tr>
-                                    <th scope="row">{index}</th>
-                                    <td>{order.user.name}</td>
+                                    <th scope="row">{index+1}</th>
+                                    <td>{order._id}</td>
                                     <td>
                                         {
                                             order.products.map((p, i) => (
