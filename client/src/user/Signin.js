@@ -10,8 +10,8 @@ const SignIn = () => {
 
 
     const [values, setValues] = useState({
-        email: 'admin@gmail.com',
-        password: 'admin1',
+        email: '',
+        password: '',
         error: '',
         loading: false,
         redirectToReferrer: false
